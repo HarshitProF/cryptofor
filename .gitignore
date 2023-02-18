@@ -1,2 +1,5 @@
 __pycache/
 venv/
+crypto_bot.__pycache__/
+crypto_bot.handlers.__pycache__
+db.__pycache__/
