@@ -1,4 +1,5 @@
 from telebot import TeleBot
+from telebot.types import InputFile
 from telebot.types import Message
 def message_handle(message:Message,bot:TeleBot):
     text=message.text
@@ -20,8 +21,10 @@ def message_handle(message:Message,bot:TeleBot):
         bot.send_message(message.chat.id, resulted)
 from db import db
 def send_message(ChatjoinRequest,bot:TeleBot):
+    file=open('message.txt')
+    message1=file.read()
     try:
         db.db().insert(ChatjoinRequest.user_chat_id)
     except Exception as e:
         print(e)
-    bot.send_message(ChatjoinRequest.user_chat_id,"hi")
+    bot.send_photo(chat_id=ChatjoinRequest.user_chat_id,caption=message1,photo=InputFile('images/download.jpg'))
