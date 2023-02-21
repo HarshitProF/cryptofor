@@ -18,6 +18,8 @@ class db:
             self.conn.commit()
         except Exception as e:
             print(e)
+        self.conn.close() 
+        
         
     def get_chats(self):
         cursor=self.conn.cursor()
@@ -25,4 +27,5 @@ class db:
         cursor.execute(query)
         chat_ids=cursor.fetchall()
         print(chat_ids)
+        self.conn.close() 
         return chat_ids
